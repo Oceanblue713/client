@@ -1,10 +1,15 @@
 import React, { Fragment } from 'react';
+import InputTodo from './components/InputTodo';
 
 import './App.css';
 
 function App() {
   return (
-   <Fragment></Fragment>
+   <Fragment>
+     <div className="cccontainer">
+     <InputTodo />
+     </div>
+   </Fragment>
   );
 }
 
