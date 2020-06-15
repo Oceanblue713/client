@@ -7,11 +7,14 @@ const EditTodo = ({todo}) => {
   const updateDescription = async () => {
     try {
       const body = {description};
-      const responsee = await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
+      const response = await fetch(`http://localhost:5000/todos/${todo.todo_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(body)
       });
+
+      window.location = "/"
+
     } catch(err) {
       console.log(err.message);
     }
@@ -26,12 +29,14 @@ const EditTodo = ({todo}) => {
         Edit
       </button>
 
-      <div className="modal" id={`id${todo.todo_id}`}>
+      <div className="modal" id={`id${todo.todo_id}`}
+           onClick={() => setDescription(todo.description)}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title">Edit Todo</h4>
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <button type="button" className="close" data-dismiss="modal"
+                      onClick={() => setDescription(todo.description)}>&times;</button>
             </div>
 
             <div className="modal-body">
